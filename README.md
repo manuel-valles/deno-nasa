@@ -12,3 +12,8 @@ A full stack app written in **Deno**
   - **Servest** is a http module suite for Deno:
     - https://servestjs.org/
     - https://github.com/keroxp/servest
+- **Oak Version**: 6.3.0 -> https://deno.land/x/oak@v6.3.0/mod.ts
+
+  - Example Context Response Headers (Middleware):
+
+    ![contextHeaders](images/contextHeaders.jpg)
