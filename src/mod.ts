@@ -1,4 +1,5 @@
 import { Application, Context, send } from 'https://deno.land/x/oak@v6.3.0/mod.ts';
+import api from './api.ts'
 
 const app: Application = new Application();
 const port: number = 8000
@@ -16,6 +17,8 @@ app.use(async (ctx: Context, next) => {
     ctx.response.headers.set('X-Response-Time', `${delta}ms`)
 });
 
+app.use(api.routes());
+
 app.use(async (ctx: Context) => {
     const filePath = ctx.request.url.pathname
     const fileWhitelist = [
@@ -27,10 +30,6 @@ app.use(async (ctx: Context) => {
             root: `${Deno.cwd()}/public`
         })
     }
-});
-
-app.use(async (ctx: Context) => {
-    ctx.response.body = 'Hello Oak!';
 });
 
 if (import.meta.main) {
