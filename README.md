@@ -1,6 +1,6 @@
 # Deno | The NASA Project
 
-A full stack app written in **Deno**
+A full stack app written in **Deno** and **Oak**.
 
 - Current libraries/frameworks available:
   - **Oak** is a middleware framework for Deno's http server, including a router middleware. https://github.com/oakserver/oak
@@ -12,8 +12,9 @@ A full stack app written in **Deno**
   - **Servest** is a http module suite for Deno:
     - https://servestjs.org/
     - https://github.com/keroxp/servest
-- **Oak Version**: 6.3.0 -> https://deno.land/x/oak@v6.3.0/mod.ts
-
+- **Oak**:
+  - Current version: https://deno.land/x/oak@v6.3.0/mod.ts
+  - Oak Documentation: https://doc.deno.land/https/deno.land/x/oak@v6.3.0/mod.ts
   - Example Context Response Headers (Middleware):
-
     ![contextHeaders](images/contextHeaders.jpg)
+- Challenges Page found (although no new challenges out since 2019): https://adventofcode.com/2019/about
