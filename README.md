@@ -17,4 +17,11 @@ A full stack app written in **Deno** and **Oak**.
   - Oak Documentation: https://doc.deno.land/https/deno.land/x/oak@v6.3.0/mod.ts
   - Example Context Response Headers (Middleware):
     ![contextHeaders](images/contextHeaders.jpg)
-- Challenges Page found (although no new challenges out since 2019): https://adventofcode.com/2019/about
+  - NOTE: Challenges Page found (although no new challenges out since 2019): https://adventofcode.com/2019/about
+  - **allowedMethods()** allows other machines to know what routes our app supports and to get specific status codes back from the requests.
+    ```typescript
+    app.use(api.allowedMethods());
+    ```
+    - With this implementation, if you try to use a method that our app doesn't include, it returns a _405 Method Not Allowed_ instead of a just a _404_.
+    - **NOTE**: The OPTIONS method, returns what methods are currently allowed by our app:
+      ![optionsAllowed](images/optionsAllowed.jpg)
