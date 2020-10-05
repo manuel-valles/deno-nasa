@@ -23,7 +23,9 @@ app.use(api.allowedMethods())
 app.use(async (ctx: Context) => {
     const filePath = ctx.request.url.pathname
     const fileWhitelist = [
-        '/index.html'
+        '/index.html',
+        '/styles/style.css',
+        '/scripts/script.js'
     ]
 
     if (fileWhitelist.includes(filePath)) {
