@@ -3,6 +3,7 @@ import { BufReader } from 'https://deno.land/std/io/mod.ts';
 import { parse } from 'https://deno.land/std/encoding/csv.ts';
 
 import * as _ from 'https://deno.land/x/lodash@4.17.15-es/lodash.js';
+import * as log from 'https://deno.land/std/log/mod.ts';
 
 type Planet = Record<string, string>
 
@@ -40,6 +41,6 @@ const loadPlanetsData = async (): Promise<Planet[]> => {
 }
 
 planets = await loadPlanetsData()
-console.log(`${planets.length} habitable planets found!`)
+log.info(`${planets.length} habitable planets found!`)
 
 export const getAllPlanets = () => planets

@@ -8,6 +8,8 @@ router.get('/', (ctx: Context) => {
 })
 
 router.get('/planets', (ctx: Context) => {
+    // Example specific error - Oak won't show the message as body for 500 statuses
+    // ctx.throw(501, "Sorry planets aren't available!")
     ctx.response.body = planets.getAllPlanets()
 })
 
