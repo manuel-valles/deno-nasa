@@ -8,6 +8,15 @@ type Planet = Record<string, string>
 
 let planets: Planet[]
 
+export const filterHabitablePlanets = (planets: Planet[]) => planets.filter((planet: Planet) => {
+    const planetaryRadius = Number(planet.koi_prad)
+    const stellarRadius = Number(planet.koi_srad)
+
+    return planet.koi_disposition === 'CONFIRMED'
+        && planetaryRadius > 0.5 && planetaryRadius < 1.5
+        && stellarRadius > 0.99 && stellarRadius < 1.01
+})
+
 const loadPlanetsData = async (): Promise<Planet[]> => {
     const path: string = join('src/data', 'kepler_exoplanets_nasa.csv')
 
@@ -20,14 +29,7 @@ const loadPlanetsData = async (): Promise<Planet[]> => {
 
     Deno.close(file.rid)
 
-    const planets: Planet[] = (result as Planet[]).filter((planet: Planet) => {
-        const planetaryRadius = Number(planet.koi_prad)
-        const stellarRadius = Number(planet.koi_srad)
-
-        return planet.koi_disposition === 'CONFIRMED'
-            && planetaryRadius > 0.5 && planetaryRadius < 1.5
-            && stellarRadius > 0.99 && stellarRadius < 1.01
-    })
+    const planets: Planet[] = filterHabitablePlanets(result as Planet[])
 
     return planets.map(planet => _.pick(planet, [
         'koi_prad',
