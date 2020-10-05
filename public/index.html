@@ -3,17 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./styles/style.css" />
     <title>NASA Project</title>
   </head>
-  <body>
-    <h1>NASA Mission Control</h1>
-    <p>
-      Schedule a mission launch for interstellar travel to one of the Kepler
-      Exoplanets.
-    </p>
-    <select name="planets" id="planets"></select>
+  <body class="bg-dark">
+    <div class="container">
+      <header>
+        <nav class="navbar navbar-expand-md navbar-dark">
+          <a class="navbar-brand" onclick="navigate('launch')"
+            >NASA Kepler Exoplanets</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-left px-md-5">
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="navigate('upcoming')"
+                  >Upcoming</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="navigate('history')"
+                  >History</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <article id="launch">
+          <p>
+            Schedule a mission launch for interstellar travel to one of the
+            Kepler Exoplanets.
+          </p>
+          <p>
+            Only confirmed planets orbiting stars matching the following
+            criteria are available for the earliest scheduled missions:
+          </p>
+          <p class="font-italic col-4 offset-2">
+            0.99 R☉ < Solar Radius < 1.01 R☉
+          </p>
+          <p class="font-italic col-4 offset-2">
+            0.50 R⊕ < Planetary Radius < 1.50 R⊕
+          </p>
+          <br />
+          <form>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Launch Date</label>
+              <div class="col-sm-4">
+                <input
+                  type="date"
+                  id="launch-day"
+                  max="2030-12-31"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Mission Name</label>
+              <div class="col-sm-4">
+                <input type="text" id="mission-name" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Rocket Type</label>
+              <div class="col-sm-4">
+                <input
+                  type="text"
+                  id="rocket-name"
+                  value="ZTM Experimental IS1"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"
+                >Destination Exoplanet</label
+              >
+              <div class="col-sm-3">
+                <select id="planets-selector" class="form-control"></select>
+              </div>
+            </div>
+            <a class="btn btn-secondary btn-sm" onclick="submitLaunch()"
+              >✔ Save Mission</a
+            >
+          </form>
 
+          <p id="launch-success" hidden>
+            Congratulations! Interstellar launch is scheduled.
+          </p>
+        </article>
+
+        <article id="history" hidden>
+          <p>
+            History of tracked mission launches. Includes SpaceX launches
+            starting from the year 2006.
+          </p>
+          <br />
+          <div id="history-list"></div>
+        </article>
+
+        <article id="upcoming" hidden>
+          <p>Upcoming missions including both SpaceX and Custom rockets.</p>
+          <p class="font-italic">
+            Warning! Clicking on the
+            <span class="btn btn-outline-danger btn-sm disabled">✖</span> aborts
+            the mission.
+          </p>
+          <br />
+          <div id="upcoming-list"></div>
+        </article>
+      </main>
+    </div>
     <script src="./scripts/script.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

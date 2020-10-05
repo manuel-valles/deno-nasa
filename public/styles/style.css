@@ -1,5 +1,20 @@
 body {
-  background-color: #000000;
-  color: #ededed;
+  color: whitesmoke;
   font-family: Helvetica, 'Source Sans Pro', Arial, sans-serif;
+}
+
+main {
+  margin: 16px auto;
+}
+
+article {
+  padding: 16px;
+}
+
+.success {
+  color: #163316;
+}
+
+.failure {
+  color: #701f1f;
 }
