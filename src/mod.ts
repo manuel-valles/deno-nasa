@@ -61,7 +61,8 @@ app.use(async (ctx: Context) => {
     const fileWhitelist = [
         '/index.html',
         '/styles/style.css',
-        '/scripts/script.js'
+        '/scripts/script.js',
+        '/images/favicon.ico'
     ]
 
     if (fileWhitelist.includes(filePath)) {

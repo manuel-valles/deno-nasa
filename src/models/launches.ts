@@ -1,20 +1,6 @@
 import * as log from 'https://deno.land/std/log/mod.ts';
 import * as _ from 'https://deno.land/x/lodash@4.17.15-es/lodash.js';
-
-interface Launch {
-    flightNumber: number
-    mission: string
-    rocket: string
-    customers: string[]
-    launchDate: number
-    upcoming: boolean
-    success?: boolean
-    target?: string
-}
-
-interface Payload {
-    customers: string[]
-}
+import { Launch, Payload } from './interfaces.ts'
 
 const launches = new Map<number, Launch>()
 
@@ -56,4 +42,13 @@ export const getAll = (): Launch[] => Array.from(launches.values())
 
 export const getOne = (id: number): Launch | undefined => {
     if (launches.has(id)) return launches.get(id)
+}
+
+export const addOne = (data: Launch): void => {
+    const newLaunch: Launch = Object.assign(data, {
+        customers: ['Deno', 'NASA'],
+        upcoming: true
+    })
+
+    launches.set(data.flightNumber, newLaunch)
 }
