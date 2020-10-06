@@ -26,3 +26,7 @@ A full stack app written in **Deno** and **Oak**.
     - **NOTE**: The OPTIONS method, returns what methods are currently allowed by our app:
       ![optionsAllowed](images/optionsAllowed.jpg)
   - Deno **Error Handling** can be set in the main/mod file as a middleware with the try-catch, and then log the errors within the EventTarget (https://developer.mozilla.org/en-US/docs/Web/API/EventTarget): `app.addEventListener()`. You can throw more specific errors with the Context: `ctx.throw(501, "Sorry planets aren't available!")`, although Oak won't show the message as body for statuses 50X.
+- **Heroku Deployment**
+  - `$ heroku login`
+  - `$ heroku create --buildpack https://github.com/chibat/heroku-buildpack-deno.git deno-nasa`
+  - `$ git push heroku main`
