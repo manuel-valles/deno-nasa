@@ -2,7 +2,10 @@
 
 A full stack app written in **Deno** and **Oak**.
 
-- Current libraries/frameworks available:
+Deployed in **Heroku** with Buildpacks. Frontend: https://deno-nasa.herokuapp.com/index.html
+
+- Current libraries/frameworks available for _Deno_:
+
   - **Oak** is a middleware framework for Deno's http server, including a router middleware. https://github.com/oakserver/oak
   - **Drash** is a REST micro-framework for Deno's HTTP server with zero dependencies.
     - https://drash.land/
@@ -12,7 +15,9 @@ A full stack app written in **Deno** and **Oak**.
   - **Servest** is a http module suite for Deno:
     - https://servestjs.org/
     - https://github.com/keroxp/servest
-- **Oak**:
+
+- **Oak Basics**:
+
   - Current version: https://deno.land/x/oak@v6.3.0/mod.ts
   - Oak Documentation: https://doc.deno.land/https/deno.land/x/oak@v6.3.0/mod.ts
   - Example Context Response Headers (Middleware):
@@ -26,7 +31,12 @@ A full stack app written in **Deno** and **Oak**.
     - **NOTE**: The OPTIONS method, returns what methods are currently allowed by our app:
       ![optionsAllowed](images/optionsAllowed.jpg)
   - Deno **Error Handling** can be set in the main/mod file as a middleware with the try-catch, and then log the errors within the EventTarget (https://developer.mozilla.org/en-US/docs/Web/API/EventTarget): `app.addEventListener()`. You can throw more specific errors with the Context: `ctx.throw(501, "Sorry planets aren't available!")`, although Oak won't show the message as body for statuses 50X.
+
 - **Heroku Deployment**
+
+  - Create _Procfile_ for Buildpacks deployments with Heroku & Deno:
+    `web: deno run --allow-net --allow-read --cached-only ./src/mod.ts --port=${PORT}`
+  - Buildpacks info: https://devcenter.heroku.com/articles/buildpacks
   - `$ heroku login`
   - `$ heroku create --buildpack https://github.com/chibat/heroku-buildpack-deno.git deno-nasa`
   - `$ git push heroku main`
