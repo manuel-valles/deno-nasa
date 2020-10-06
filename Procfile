@@ -1,1 +1,1 @@
-web: deno run --allow-net=:${PORT} --allow-read --cached-only ./src/mod.ts --port=${PORT}
+web: deno run --allow-net=https://api.spacexdata.com/v3/launches --allow-read --cached-only ./src/mod.ts --port=${PORT}
