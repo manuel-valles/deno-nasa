@@ -115,6 +115,32 @@ const listHistory = () => {
     });
 };
 
+const submitLaunch = () => {
+  const target = document.getElementById('planets-selector').value;
+  const launchDate = new Date(document.getElementById('launch-day').value);
+  const mission = document.getElementById('mission-name').value;
+  const rocket = document.getElementById('rocket-name').value;
+  const flightNumber = launches[launches.length - 1].flightNumber + 1;
+
+  return fetch('/launches', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      launchDate: Math.floor(launchDate / 1000),
+      flightNumber,
+      mission,
+      rocket,
+      target,
+    }),
+  })
+    .then(() => {
+      document.getElementById('launch-success').hidden = false;
+    })
+    .then(loadLaunches);
+};
+
 const navigate = (navigateTo) => {
   const pages = ['history', 'upcoming', 'launch'];
   document.getElementById(navigateTo).hidden = false;

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./images/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -10,7 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./styles/style.css" />
-    <title>NASA Project</title>
+    <title>NASA Kepler Exoplanets | Deno</title>
   </head>
   <body class="bg-dark">
     <div class="container">
@@ -56,16 +57,16 @@
             Only confirmed planets orbiting stars matching the following
             criteria are available for the earliest scheduled missions:
           </p>
-          <p class="font-italic col-4 offset-2">
+          <p class="font-italic col-lg-4 offset-lg-3">
             0.99 R☉ < Solar Radius < 1.01 R☉
           </p>
-          <p class="font-italic col-4 offset-2">
+          <p class="font-italic col-lg-4 offset-lg-3">
             0.50 R⊕ < Planetary Radius < 1.50 R⊕
           </p>
           <br />
           <form>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Launch Date</label>
+              <label class="col-sm-3 col-form-label">Launch Date</label>
               <div class="col-sm-4">
                 <input
                   type="date"
@@ -76,18 +77,18 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Mission Name</label>
+              <label class="col-sm-3 col-form-label">Mission Name</label>
               <div class="col-sm-4">
                 <input type="text" id="mission-name" class="form-control" />
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Rocket Type</label>
+              <label class="col-sm-3 col-form-label">Rocket Type</label>
               <div class="col-sm-4">
                 <input
                   type="text"
                   id="rocket-name"
-                  value="ZTM Experimental IS1"
+                  value="WFH Experimental IS1"
                   class="form-control"
                   disabled
                 />
@@ -97,18 +98,31 @@
               <label class="col-sm-3 col-form-label"
                 >Destination Exoplanet</label
               >
-              <div class="col-sm-3">
+              <div class="col-sm-4">
                 <select id="planets-selector" class="form-control"></select>
               </div>
             </div>
             <a class="btn btn-secondary btn-sm" onclick="submitLaunch()"
               >✔ Save Mission</a
             >
+            <br />
+            <br />
+            <div class="row px-3">
+              <small
+                id="launch-success"
+                class="alert alert-success col-sm-7 justify-content-center"
+                role="alert"
+                hidden
+              >
+                <strong>Congratulations!</strong> Interstellar launch is
+                scheduled. Please
+                <a href="#" class="alert-link" onclick="navigate('upcoming')"
+                  >check the upcoming launches</a
+                >.
+              </small>
+            </div>
           </form>
-
-          <p id="launch-success" hidden>
-            Congratulations! Interstellar launch is scheduled.
-          </p>
+          <br />
         </article>
 
         <article id="history" hidden>
