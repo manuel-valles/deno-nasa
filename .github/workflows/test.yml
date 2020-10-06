@@ -22,6 +22,6 @@ jobs:
         with:
           deno-version: ${{ matrix.deno-version }}
       - name: Build Deno Module
-        run: deno run --reload ./src/mod.ts
+        run: deno run --reload --alow-read ./src/mod.ts
       - name: Test Deno Module
         run: deno test --allow-none
