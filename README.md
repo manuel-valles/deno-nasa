@@ -41,3 +41,12 @@ Deployed in **Heroku** with Buildpacks. Frontend: https://deno-nasa.herokuapp.co
   - `$ heroku login`
   - `$ heroku create --buildpack https://github.com/chibat/heroku-buildpack-deno.git deno-nasa`
   - `$ git push heroku main`
+  - You can **restart** the app:
+
+    - From the platform (_Restart all dynos_):
+
+      ![restartHerokuApp](/images/restartHerokuApp.jpg)
+
+    - From the console (individual dyno): `$ heroku ps:restart web.1`. Where web.x is the name and number of your dyno.
+
+  - Logs: `$ heroku logs --tail`
