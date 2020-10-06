@@ -1,1 +1,0 @@
-web: deno run --allow-net=:${PORT} --allow-read --cached-only ./src/mod.ts --port=${PORT}
