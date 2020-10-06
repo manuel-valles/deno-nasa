@@ -1,9 +1,19 @@
 import { Application, Context, send } from 'https://deno.land/x/oak@v6.3.0/mod.ts';
 import api from './api.ts'
 import * as log from 'https://deno.land/std/log/mod.ts';
+import * as flags from 'https://deno.land/std/flags/mod.ts';
 
-const app: Application = new Application();
-const port: number = 8000
+const { args, exit } = Deno
+const DEFAULT_PORT: number = 8000
+const argPort = flags.parse(args).port
+const port = argPort ? Number(argPort) : DEFAULT_PORT
+
+if (isNaN(port)) {
+    console.error('This is not a port number')
+    exit(1)
+}
+
+const app: Application = new Application()
 
 await log.setup({
     handlers: {
