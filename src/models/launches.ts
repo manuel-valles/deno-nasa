@@ -52,3 +52,12 @@ export const addOne = (data: Launch): void => {
 
     launches.set(data.flightNumber, newLaunch)
 }
+
+export const abortOne = (id: number): Launch | undefined => {
+    const abortedLaunch: Launch | undefined = launches.get(id)
+    if (abortedLaunch) {
+        abortedLaunch.upcoming = false
+        abortedLaunch.success = false
+    }
+    return abortedLaunch
+}

@@ -141,6 +141,14 @@ const submitLaunch = () => {
     .then(loadLaunches);
 };
 
+const abortLaunch = (id) => {
+  return fetch(`/launches/${id}`, {
+    method: 'delete',
+  })
+    .then(loadLaunches)
+    .then(listUpcoming);
+};
+
 const navigate = (navigateTo) => {
   const pages = ['history', 'upcoming', 'launch'];
   document.getElementById(navigateTo).hidden = false;

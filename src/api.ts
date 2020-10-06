@@ -31,6 +31,14 @@ router.get('/launches/:id', (ctx: RouterContext): void => {
     }
 })
 
+router.delete('/launches/:id', async (ctx: RouterContext): Promise<void> => {
+    const id = ctx.params?.id
+    if (id) {
+        const result: Launch | undefined = launches.abortOne(Number(id))
+        ctx.response.body = { success: result }
+    }
+})
+
 router.post('/launches', async (ctx: RouterContext): Promise<void> => {
     const newLaunch: Launch = await ctx.request.body().value
     launches.addOne(newLaunch)
